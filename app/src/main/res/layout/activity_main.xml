@@ -90,7 +90,7 @@
         android:contentDescription="@string/description_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_like_40dp"
+        app:srcCompat="@drawable/ic_like_24"
 
         />
 
@@ -98,8 +98,8 @@
         android:id="@+id/numberLike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
@@ -114,7 +114,7 @@
         android:contentDescription="@string/description_share"
         app:layout_constraintStart_toEndOf="@id/numberLike"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_share_40dp"
+        app:srcCompat="@drawable/ic_share_24"
 
         />
 
@@ -122,8 +122,9 @@
         android:id="@+id/numberShare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
+        android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
@@ -136,10 +137,11 @@
         android:layout_height="@dimen/icon_size"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
         android:contentDescription="@string/description_view"
         app:layout_constraintEnd_toStartOf="@id/numberView"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_view_40dp"
+        app:srcCompat="@drawable/ic_views_24"
 
         />
 
@@ -148,7 +150,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
+
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
