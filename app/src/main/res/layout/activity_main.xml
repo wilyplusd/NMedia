@@ -84,74 +84,77 @@
 
     <ImageView
         android:id="@+id/like"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_like_40dp"
+        app:srcCompat="@drawable/ic_like_24"
 
         />
 
     <TextView
-        android:id="@+id/numberLike"
+        android:id="@+id/countLike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginStart="@dimen/common_spacing"
         android:padding="@dimen/icon_padding"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/numberLike" />
+        tools:text="@sample/post.json/data/countLike" />
 
     <ImageView
         android:id="@+id/share"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_share"
-        app:layout_constraintStart_toEndOf="@id/numberLike"
+        app:layout_constraintStart_toEndOf="@id/countLike"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_share_40dp"
+        app:srcCompat="@drawable/ic_share_24"
 
         />
 
     <TextView
-        android:id="@+id/numberShare"
+        android:id="@+id/countShare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginStart="@dimen/common_spacing"
         android:padding="@dimen/icon_padding"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
 
-        tools:text="@sample/post.json/data/numberShare" />
+        tools:text="@sample/post.json/data/countShare" />
 
     <ImageView
         android:id="@+id/view"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
         android:contentDescription="@string/description_view"
-        app:layout_constraintEnd_toStartOf="@id/numberView"
+        app:layout_constraintEnd_toStartOf="@id/countView"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@mipmap/ic_view_40dp"
+        app:srcCompat="@drawable/ic_views_24"
 
         />
 
     <TextView
-        android:id="@+id/numberView"
+        android:id="@+id/countView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/numberShare" />
+        tools:text="@sample/post.json/data/countView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
