@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@sample/post.json/data/authorAvatar" />
+        app:srcCompat="@drawable/post_avatar" />
 
     <TextView
         android:id="@+id/author"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@sample/post.json/data/author" />
+        tools:text="" />
 
     <TextView
         android:id="@+id/published"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toBottomOf="@id/author"
-        tools:text="@sample/post.json/data/published" />
+        tools:text="" />
 
     <ImageButton
         android:id="@+id/menu"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
-        tools:text="@sample/post.json/data/content" />
+        tools:text="" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierContent"
@@ -95,7 +95,7 @@
         />
 
     <TextView
-        android:id="@+id/numberLike"
+        android:id="@+id/countLike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
@@ -103,7 +103,7 @@
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/numberLike" />
+        tools:text="" />
 
     <ImageView
         android:id="@+id/share"
@@ -112,14 +112,14 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_share"
-        app:layout_constraintStart_toEndOf="@id/numberLike"
+        app:layout_constraintStart_toEndOf="@id/countLike"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
         app:srcCompat="@drawable/ic_share_24"
 
         />
 
     <TextView
-        android:id="@+id/numberShare"
+        android:id="@+id/countShare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
@@ -129,7 +129,7 @@
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
 
-        tools:text="@sample/post.json/data/numberShare" />
+        tools:text="" />
 
     <ImageView
         android:id="@+id/view"
@@ -139,21 +139,21 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
         android:contentDescription="@string/description_view"
-        app:layout_constraintEnd_toStartOf="@id/numberView"
+        app:layout_constraintEnd_toStartOf="@id/countView"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
         app:srcCompat="@drawable/ic_views_24"
 
         />
 
     <TextView
-        android:id="@+id/numberView"
+        android:id="@+id/countView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/numberShare" />
+        tools:text="" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

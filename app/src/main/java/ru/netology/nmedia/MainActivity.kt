@@ -2,13 +2,14 @@ package ru.netology.nmedia
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.dto.numberCalculation
 
 
+class MainActivity : AppCompatActivity() {
 
-    class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,27 +27,26 @@ import ru.netology.nmedia.dto.Post
             published.text = post.published
             content.text = post.content
             if (post.likedByMe) {
-                like?.setImageResource(R.drawable.ic_liked_24)
+                like.setImageResource(R.drawable.ic_liked_24)
             }
-            numberLike?.text = post.likes.toString()
+            countLike.text = numberCalculation(post.likes)
+            countView.text = numberCalculation(post.views)
+            countShare.text = numberCalculation(post.shares)
 
-            root.setOnClickListener {
-                Log.d("stuff", "stuff")
-            }
-
-            avatar.setOnClickListener {
-                Log.d("stuff", "avatar")
-            }
-
-            like?.setOnClickListener {
-                Log.d("stuff", "like")
+            like.setOnClickListener {
                 post.likedByMe = !post.likedByMe
                 like.setImageResource(
                     if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
                 )
                 if (post.likedByMe) post.likes++ else post.likes--
-                numberLike?.text = post.likes.toString()
+
+                countLike.text = numberCalculation(post.likes)
             }
+            share.setOnClickListener {
+                post.shares++
+                countShare.text = numberCalculation(post.shares)
+            }
+
         }
     }
 }
