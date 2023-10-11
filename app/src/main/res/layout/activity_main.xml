@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toBottomOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@sample/post.json/data/authorAvatar" />
+        app:srcCompat="@drawable/post_avatar" />
 
     <TextView
         android:id="@+id/author"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        tools:text="@sample/post.json/data/author" />
+        tools:text="" />
 
     <TextView
         android:id="@+id/published"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toStartOf="@id/menu"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toBottomOf="@id/author"
-        tools:text="@sample/post.json/data/published" />
+        tools:text="" />
 
     <ImageButton
         android:id="@+id/menu"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
-        tools:text="@sample/post.json/data/content" />
+        tools:text="" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierContent"
@@ -99,13 +99,14 @@
         android:id="@+id/countLike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginStart="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
+        android:layout_marginTop="@dimen/common_spacing"
+
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/like"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/countLike" />
+        tools:text="" />
+
 
     <ImageView
         android:id="@+id/share"
@@ -124,14 +125,14 @@
         android:id="@+id/countShare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
+
         android:layout_marginStart="@dimen/common_spacing"
-        android:padding="@dimen/icon_padding"
+        android:layout_marginTop="@dimen/common_spacing"
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
 
-        tools:text="@sample/post.json/data/countShare" />
+        tools:text="" />
 
     <ImageView
         android:id="@+id/view"
@@ -155,6 +156,8 @@
         android:textColor="@color/material_dynamic_neutral70"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        tools:text="@sample/post.json/data/countView" />
+        tools:text="" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
