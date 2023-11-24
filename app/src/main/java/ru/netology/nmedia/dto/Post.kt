@@ -8,10 +8,10 @@ data class Post(
     val author: String,
     val content: String,
     val published: String,
-    var likes: Int = 10999,
-    var likedByMe: Boolean = false,
-    var shares: Int = 999999,
-    var views: Int = 100001
+    var likes: Int = 10,
+    val likedByMe: Boolean = false,
+    var shares: Int = 999,
+    var views: Int = 10
 )
 
 fun numberCalculation(number:Int = 0): String {
