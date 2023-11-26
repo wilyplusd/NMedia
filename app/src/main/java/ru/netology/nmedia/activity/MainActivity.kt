@@ -1,6 +1,5 @@
 package ru.netology.nmedia.activity
 
-import PostsAdapterShare
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
