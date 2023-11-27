@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = PostsAdapter (
             onLikeListener = { viewModel.like(it.id) },
-            onShareListener = { viewModel.share(it.id) }
+            onShareListener = { viewModel.share(it.id)}
         )
 
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
-            adapter.list = posts
+            adapter.submitList(posts)
         }
     }
 }
