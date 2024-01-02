@@ -2,8 +2,11 @@ package ru.netology.nmedia.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.View.GONE
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
@@ -46,12 +49,26 @@ class MainActivity : AppCompatActivity() {
             if (post.id == 0L) {
                 return@observe
             }
+
+          binding.groupEditView.visibility =  View.VISIBLE
+            binding.contentPreviewLabel.setText(post.content)
+
             with(binding.content) {
                 requestFocus()
                 setText(post.content)
+
             }
         }
-        binding.save.setOnClickListener {
+        binding.cancelButton.setOnClickListener {
+           binding.groupEditView.visibility =  View.GONE
+            with(binding.content) {
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
+            }
+
+        }
+        binding.saveButton.setOnClickListener {
             with(binding.content) {
                 if (text.isNullOrBlank()) {
                     Toast.makeText(
@@ -68,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
+               binding.groupEditView.visibility =  View.GONE
             }
         }
     }
