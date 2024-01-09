@@ -9,6 +9,7 @@
     <string name="description_share">Количество поделиться</string>
 
     <string name="description_post_like">Нравится</string>
+    <string name="description_edit">Редактирование</string>
     <string name="description_post_share">Поделиться</string>
     <string name="description_post_save">Сохранить</string>
     <string name="menu_edit">Изменить</string>

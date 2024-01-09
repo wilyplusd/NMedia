@@ -8,6 +8,7 @@
     <string name="description_share">Numbers of shares</string>
 
     <string name="description_post_like">Like</string>
+    <string name="description_edit" translatable="false">Edit</string>
     <string name="description_post_share">Share</string>
     <string name="description_post_save">Save</string>
     <string name="menu_remove">Remove</string>
