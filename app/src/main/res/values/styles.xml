@@ -1,0 +1,9 @@
+<resources>
+    <style name="Widget.AppTheme.LikeCheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="buttonTint"#ff0000</item>
+
+    </style>
+
+
+
+</resources>

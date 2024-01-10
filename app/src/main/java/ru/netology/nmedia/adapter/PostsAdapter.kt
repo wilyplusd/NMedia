@@ -57,9 +57,10 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
-            )
+//            like.setImageResource(
+//                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
+//            )
+            like.isChecked = post.likedByMe
             countLike.text = numberCalculation(post.likes)
             countView.text = numberCalculation(post.views)
             countShare.text = numberCalculation(post.shares)

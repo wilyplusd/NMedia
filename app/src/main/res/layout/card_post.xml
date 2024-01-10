@@ -83,18 +83,27 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageView
+<!--    <ImageView-->
+<!--        android:id="@+id/like"-->
+<!--        android:layout_width="@dimen/icon_size"-->
+<!--        android:layout_height="@dimen/icon_size"-->
+<!--        android:layout_marginTop="@dimen/common_spacing"-->
+<!--        android:contentDescription="@string/description_like"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/barrierContent"-->
+<!--        app:srcCompat="@drawable/ic_like_24"-->
+
+<!--        />-->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_marginTop="@dimen/common_spacing"
-        android:contentDescription="@string/description_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description_post_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrierContent"
-        app:srcCompat="@drawable/ic_like_24"
+        app:icon="@drawable/ic_like_24dp"
 
         />
-
     <TextView
         android:id="@+id/countLike"
         android:layout_width="0dp"
