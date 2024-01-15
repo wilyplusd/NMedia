@@ -60,9 +60,9 @@ class PostViewHolder(
 //            like.setImageResource(
 //                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
 //            )
-          //  like.isChecked = post.likedByMe
+            like.isChecked = post.likedByMe
             like.text = numberCalculation(post.likes)
-           view.text = numberCalculation(post.views)
+            view.text = numberCalculation(post.views)
             share.text = numberCalculation(post.shares)
 
             menu.setOnClickListener {
