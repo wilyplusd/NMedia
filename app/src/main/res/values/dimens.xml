@@ -5,4 +5,9 @@
     <dimen name="posts_avatar_size">48dp</dimen>
     <dimen name="icon_size">24dp</dimen>
     <dimen name="icon_padding">5dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="checkbox_padding_start">8dp</dimen>
+    <dimen name="icon_button_padding">12d</dimen>
+    <dimen name="icon_button_min_size">48dp</dimen>
+    <dimen name="icon_menubutton_min_size">24dp</dimen>
 </resources>
