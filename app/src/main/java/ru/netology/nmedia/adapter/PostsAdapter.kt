@@ -1,15 +1,22 @@
 package ru.netology.nmedia.adapter
 
+import android.R.id
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.numberCalculation
+
 
 interface OnInteractionListener {
     fun onLike(post: Post) {}
@@ -17,11 +24,8 @@ interface OnInteractionListener {
     fun onShare(post: Post) {}
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
+    fun onOpenVideo(post: Post) {}
 }
-
-//typealias OnLikeListener = (post: Post) -> Unit
-//typealias OnShareListener = (post: Post) -> Unit
-//typealias OnRemoveListener = (post: Post) -> Unit
 
 class PostsAdapter(
     private val onInteractionListener: OnInteractionListener,
@@ -57,13 +61,19 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-//            like.setImageResource(
-//                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
-//            )
             like.isChecked = post.likedByMe
             like.text = numberCalculation(post.likes)
             view.text = numberCalculation(post.views)
             share.text = numberCalculation(post.shares)
+            if (post.videoId != null) {
+                Picasso.get().load("https://img.youtube.com/vi/${post.videoId}/0.jpg").into(video)
+                video.setOnClickListener {
+                    onInteractionListener.onOpenVideo(post)
+                }
+            }
+            else {
+                video.setImageResource(android.R.color.transparent)
+            }
 
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
