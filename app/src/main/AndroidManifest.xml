@@ -10,39 +10,22 @@
         android:roundIcon="@mipmap/ic_netology_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeWork1">
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.IntentHandlerActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
+    <activity
+        android:name=".activity.AppActivity"
+        android:exported="true">
+        <nav-graph android:value="@navigation/nav_main" />
+        <intent-filter>
+            <action android:name="android.intent.action.SEND" />
 
-            </intent-filter>
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <data android:type="video/*" />-->
-<!--                <data android:type="application/ogg" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".activity.NewPostActivity"
-            android:exported="false" />
+            <category android:name="android.intent.category.DEFAULT" />
 
+            <data android:mimeType="text/plain" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="*" />
-        </intent>
-    </queries>
 </manifest>

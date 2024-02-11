@@ -1,0 +1,73 @@
+package ru.netology.nmedia.activity
+import ru.netology.nmedia.util.StringArg
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
+
+import ru.netology.nmedia.databinding.FragmentNewPostBinding
+import ru.netology.nmedia.util.AndroidUtils
+import ru.netology.nmedia.viewmodel.PostViewModel
+
+class NewPostFragment : Fragment() {
+
+
+        companion object {
+            var Bundle.textArg: String? by StringArg
+        }
+
+        private val viewModel: PostViewModel by viewModels(
+            ownerProducer = ::requireParentFragment
+        )
+        override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View {
+            val binding = FragmentNewPostBinding.inflate(
+                inflater,
+                container,
+                false
+            )
+
+            arguments?.textArg
+                ?.let(binding.edit::setText)
+
+            binding.ok.setOnClickListener {
+                viewModel.changeContent(binding.edit.text.toString())
+                viewModel.save()
+                AndroidUtils.hideKeyboard(requireView())
+                findNavController().navigateUp()
+            }
+            return binding.root
+        }
+    }
+
+//
+//        super.onCreate(savedInstanceState)
+//        val binding = ActivityNewPostBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//        val postContent = intent.getStringExtra("postContent")
+//        if (postContent != null) {
+//            binding.edit.setText(postContent)
+//        }
+//        binding.edit.requestFocus()
+//        binding.ok.setOnClickListener {
+//            val intent = Intent()
+//            if (binding.edit.text.isNullOrBlank()) {
+//                setResult(RESULT_CANCELED, intent)
+//            } else {
+//                val content = binding.edit.text.toString()
+//                intent.putExtra("postContent", content)
+//                setResult(RESULT_OK, intent)
+//            }
+//            finish()
+//        }
+//    }
+//}
