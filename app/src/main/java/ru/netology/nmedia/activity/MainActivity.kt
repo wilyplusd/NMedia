@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 val shareIntent =
                     Intent.createChooser(intent, getString(R.string.chooser_share_post))
                 startActivity(shareIntent)
+
             }
 
             override fun onOpenVideo(post: Post) {
