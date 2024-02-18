@@ -107,7 +107,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
                     id = nextId++,
                     author = "Me",
                     likedByMe = false,
-                    published = "now"
+                    published = "now",
+                    videoId = "dQw4w9WgXcQ"
                 )
             ) + posts
             data.value = posts
