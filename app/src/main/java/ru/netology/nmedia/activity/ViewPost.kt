@@ -2,9 +2,6 @@ package ru.netology.nmedia.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -14,10 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
-import ru.netology.nmedia.activity.ViewPost.Companion.content
 import ru.netology.nmedia.databinding.FragmentViewPostBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.util.AndroidUtils
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
 
@@ -58,8 +53,14 @@ class ViewPost : Fragment() {
 
         Picasso.get().load("https://img.youtube.com/vi/${arguments?.videoId}/0.jpg")
             .into(binding.video)
-        var post:Post =Post(arguments?.idPost?.toLong() ?: 0, arguments?.author.toString(), arguments?.content.toString(),  arguments?.published.toString(),
-            arguments?.likes?.toInt() ?: 0)
+
+        val post: Post = Post(
+            arguments?.idPost?.toLong() ?: 0,
+            arguments?.author.toString(),
+            arguments?.content.toString(),
+            arguments?.published.toString(),
+            arguments?.likes?.toInt() ?: 0
+        )
 
 
         binding.menu.setOnClickListener {
@@ -96,3 +97,4 @@ class ViewPost : Fragment() {
         return binding.root
     }
 }
+
