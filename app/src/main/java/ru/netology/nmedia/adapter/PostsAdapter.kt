@@ -1,13 +1,8 @@
 package ru.netology.nmedia.adapter
 
-import android.R.id
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +20,7 @@ interface OnInteractionListener {
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
     fun onOpenVideo(post: Post) {}
+    fun onViewPost(post: Post) {}
 }
 
 class PostsAdapter(
@@ -103,7 +99,9 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
 
-
+            content.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
         }
     }
 
