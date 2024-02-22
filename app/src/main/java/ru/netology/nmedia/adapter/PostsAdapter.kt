@@ -102,6 +102,20 @@ class PostViewHolder(
             content.setOnClickListener {
                 onInteractionListener.onViewPost(post)
             }
+
+            author.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+            published.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+
+            avatar.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+            video.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
         }
     }
 

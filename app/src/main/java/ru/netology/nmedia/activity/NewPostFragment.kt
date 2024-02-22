@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
+import ru.netology.nmedia.R
 
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.util.AndroidUtils
@@ -42,7 +43,9 @@ class NewPostFragment : Fragment() {
                 viewModel.changeContent(binding.edit.text.toString())
                 viewModel.save()
                 AndroidUtils.hideKeyboard(requireView())
-                findNavController().navigateUp()
+                //findNavController().navigateUp()
+                findNavController().navigate(
+                    R.id.action_newPostFragment_to_feedFragment)
             }
             return binding.root
         }

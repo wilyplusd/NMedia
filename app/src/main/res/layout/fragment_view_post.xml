@@ -40,6 +40,16 @@
             tools:text="" />
 
         <TextView
+            android:id="@+id/idPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text=""
+            tools:ignore="MissingConstraints" />
+
+        <TextView
             android:id="@+id/published"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
