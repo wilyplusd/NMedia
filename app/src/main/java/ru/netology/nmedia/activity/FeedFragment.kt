@@ -9,22 +9,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-
-
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.ViewPost.Companion.author
-import ru.netology.nmedia.activity.ViewPost.Companion.content
-import ru.netology.nmedia.activity.ViewPost.Companion.published
-import ru.netology.nmedia.activity.ViewPost.Companion.videoId
 import ru.netology.nmedia.activity.ViewPost.Companion.idPost
-import ru.netology.nmedia.activity.ViewPost.Companion.likes
-
-
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
-
-
 import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
@@ -43,13 +32,6 @@ class FeedFragment : Fragment() {
             container,
             false
         )
-
-//        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
-//            if (result != null) {
-//                viewModel.changeContent(result)
-//                viewModel.save()
-//            }
-//        }
 
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
@@ -96,12 +78,7 @@ class FeedFragment : Fragment() {
                 findNavController().navigate(
                     R.id.action_feedFragment_to_viewPost,
                     Bundle().apply {
-                        idPost = post.id.toString()
-                        author = post.author
-                        content = post.content
-                        published = post.published
-                        videoId = post.videoId
-                        likes = post.likes.toString()
+                        idPost = post.id
 
                     }
                 )

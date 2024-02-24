@@ -26,11 +26,6 @@ import ru.netology.nmedia.viewmodel.PostViewModel
 class ViewPost : Fragment() {
     companion object {
         var Bundle.idPost: Long by LongArg
-        var Bundle.author: String? by StringArg
-        var Bundle.content: String? by StringArg
-        var Bundle.published: String? by StringArg
-        var Bundle.videoId: String? by StringArg
-        var Bundle.likes: Int by IntArg
     }
 
     private val viewModel: PostViewModel by viewModels(
@@ -55,7 +50,6 @@ class ViewPost : Fragment() {
                 post = it
             }
             PostViewHolder(binding.singlePost, object : OnInteractionListener {
-                // Вариант для конкретного фрагмента (учитывая переходы)
                 override fun onEdit(post: Post) {
                     viewModel.edit(post)
                     findNavController().navigate(
