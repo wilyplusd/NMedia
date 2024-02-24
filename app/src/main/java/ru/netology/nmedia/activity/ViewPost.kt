@@ -13,24 +13,22 @@ import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
-import ru.netology.nmedia.adapter.OnInteractionListener
-import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FragmentViewPostBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.util.IntArg
+import ru.netology.nmedia.util.LongArg
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 
 class ViewPost : Fragment() {
-
-
     companion object {
-        var Bundle.idPost: String? by StringArg
+        var Bundle.idPost: Long by LongArg
         var Bundle.author: String? by StringArg
         var Bundle.content: String? by StringArg
         var Bundle.published: String? by StringArg
         var Bundle.videoId: String? by StringArg
-        var Bundle.likes: String? by StringArg
+        var Bundle.likes: Int by IntArg
     }
 
     private val viewModel: PostViewModel by viewModels(
@@ -58,24 +56,13 @@ class ViewPost : Fragment() {
         Picasso.get().load("https://img.youtube.com/vi/${arguments?.videoId}/0.jpg")
             .into(binding.video)
 
-        val post: Post = Post(
-            arguments?.idPost?.toLong() ?: 0,
+        val post = Post(
+            arguments?.idPost ?: 0,
             arguments?.author.toString(),
             arguments?.content.toString(),
             arguments?.published.toString(),
-            arguments?.likes?.toInt() ?: 0
+            arguments?.likes ?: 0
         )
-
-
-//        if (post.videoId != null) {
-//            Picasso.get().load("https://img.youtube.com/vi/${post.videoId}/0.jpg").into(video)
-//            video.setOnClickListener {
-//                onInteractionListener.onOpenVideo(post)
-//            }
-//        }
-//        else {
-//            video.setImageResource(android.R.color.transparent)
-//        }
 
         binding.menu.setOnClickListener {
             PopupMenu(it.context, it).apply {
@@ -109,7 +96,14 @@ class ViewPost : Fragment() {
 
 
         }
-
+        binding.video.setOnClickListener {
+            startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.youtube.com/watch?v=${post.videoId}")
+                )
+            )
+        }
         return binding.root
     }
 }

@@ -44,13 +44,6 @@ class FeedFragment : Fragment() {
             false
         )
 
-//        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
-//            if (result != null) {
-//                viewModel.changeContent(result)
-//                viewModel.save()
-//            }
-//        }
-
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
@@ -96,12 +89,12 @@ class FeedFragment : Fragment() {
                 findNavController().navigate(
                     R.id.action_feedFragment_to_viewPost,
                     Bundle().apply {
-                        idPost = post.id.toString()
+                        idPost = post.id
                         author = post.author
                         content = post.content
                         published = post.published
                         videoId = post.videoId
-                        likes = post.likes.toString()
+                        likes = post.likes
 
                     }
                 )

@@ -16,6 +16,27 @@ object StringArg: ReadWriteProperty<Bundle, String?> {
 
 }
 
+object LongArg: ReadWriteProperty<Bundle, Long> {
+
+    override fun setValue(thisRef: Bundle, property: KProperty<*>, value: Long) {
+        thisRef.putLong(property.name, value)
+    }
+
+    override fun getValue(thisRef: Bundle, property: KProperty<*>): Long =
+        thisRef.getLong(property.name)
+}
+
+object IntArg: ReadWriteProperty<Bundle, Int> {
+
+    override fun setValue(thisRef: Bundle, property: KProperty<*>, value: Int) {
+        thisRef.putInt(property.name, value)
+    }
+
+    override fun getValue(thisRef: Bundle, property: KProperty<*>): Int =
+        thisRef.getInt(property.name)
+
+
+}
 
 
 
