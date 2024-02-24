@@ -53,6 +53,7 @@ class PostViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(post: Post) {
+
         binding.apply {
             author.text = post.author
             published.text = post.published
