@@ -14,23 +14,23 @@ import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.OnInteractionListener
-import ru.netology.nmedia.adapter.PostsAdapter
+import ru.netology.nmedia.adapter.PostViewHolder
 import ru.netology.nmedia.databinding.FragmentViewPostBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.util.IntArg
+import ru.netology.nmedia.util.LongArg
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 
 class ViewPost : Fragment() {
-
-
     companion object {
-        var Bundle.idPost: String? by StringArg
+        var Bundle.idPost: Long by LongArg
         var Bundle.author: String? by StringArg
         var Bundle.content: String? by StringArg
         var Bundle.published: String? by StringArg
         var Bundle.videoId: String? by StringArg
-        var Bundle.likes: String? by StringArg
+        var Bundle.likes: Int by IntArg
     }
 
     private val viewModel: PostViewModel by viewModels(
@@ -47,70 +47,65 @@ class ViewPost : Fragment() {
             container,
             false
         )
-
-        arguments?.author
-            ?.let(binding.author::setText)
-        arguments?.content
-            ?.let(binding.content::setText)
-        arguments?.published
-            ?.let(binding.published::setText)
-
-        Picasso.get().load("https://img.youtube.com/vi/${arguments?.videoId}/0.jpg")
-            .into(binding.video)
-
-        val post: Post = Post(
-            arguments?.idPost?.toLong() ?: 0,
-            arguments?.author.toString(),
-            arguments?.content.toString(),
-            arguments?.published.toString(),
-            arguments?.likes?.toInt() ?: 0
-        )
+        var post = Post(0, "", "", "", 0)
 
 
-//        if (post.videoId != null) {
-//            Picasso.get().load("https://img.youtube.com/vi/${post.videoId}/0.jpg").into(video)
-//            video.setOnClickListener {
-//                onInteractionListener.onOpenVideo(post)
-//            }
-//        }
-//        else {
-//            video.setImageResource(android.R.color.transparent)
-//        }
-
-        binding.menu.setOnClickListener {
-            PopupMenu(it.context, it).apply {
-                inflate(R.menu.options_post)
-                setOnMenuItemClickListener { item ->
-                    when (item.itemId) {
-                        R.id.remove -> {
-                            viewModel.removeById(post.id)
-                            findNavController().navigate(
-                                R.id.action_viewPost_to_feedFragment
-                            )
-                            true
-
+        viewModel.data.observe(viewLifecycleOwner) { list ->
+            list.find { it.id == arguments?.idPost }?.let {
+                post = it
+            }
+            PostViewHolder(binding.singlePost, object : OnInteractionListener {
+                // Вариант для конкретного фрагмента (учитывая переходы)
+                override fun onEdit(post: Post) {
+                    viewModel.edit(post)
+                    findNavController().navigate(
+                        R.id.action_viewPost_to_newPostFragment,
+                        Bundle().apply {
+                            textArg = post.content
                         }
-
-                        R.id.edit -> {
-                            viewModel.edit(post)
-                            findNavController().navigate(
-                                R.id.action_viewPost_to_newPostFragment,
-                                Bundle().apply {
-                                    textArg = post.content
-                                }
-                            )
-                            true
-                        }
-
-                        else -> false
-                    }
+                    )
                 }
-            }.show()
+                override fun onLike(post: Post) {
+                    viewModel.like(post.id)
+                }
 
+                override fun onRemove(post: Post) {
+                    viewModel.removeById(post.id)
+                    findNavController().navigate(
+                        R.id.action_viewPost_to_feedFragment)
+                }
+
+                override fun onShare(post: Post) {
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, post.content)
+                        type = "text/plain"
+                    }
+
+                    val shareIntent =
+                        Intent.createChooser(intent, getString(R.string.chooser_share_post))
+                    startActivity(shareIntent)
+
+                }
+
+                override fun onOpenVideo(post: Post) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://www.youtube.com/watch?v=${post.videoId}")
+                        )
+                    )
+                }
+            }).bind(post)
 
         }
-
         return binding.root
     }
+
 }
+
+
+
+
+
 
