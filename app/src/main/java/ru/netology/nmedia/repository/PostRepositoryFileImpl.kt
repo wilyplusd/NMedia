@@ -66,7 +66,9 @@ class PostRepositoryFileImpl(
                     id = nextId(),
                     author = "Me",
                     likedByMe = false,
-                    published = "now"
+                    published = "now",
+                    videoId = "dQw4w9WgXcQ"
+
                 )
             ) + posts
         } else {

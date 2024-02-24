@@ -113,9 +113,7 @@ class PostViewHolder(
             avatar.setOnClickListener {
                 onInteractionListener.onViewPost(post)
             }
-            video.setOnClickListener {
-                onInteractionListener.onViewPost(post)
-            }
+
         }
     }
 

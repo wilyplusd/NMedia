@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_newPostFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_newPostFragment_to_viewPost"
+            app:destination="@id/viewPost" />
     </fragment>
     <fragment
         android:id="@+id/viewPost"

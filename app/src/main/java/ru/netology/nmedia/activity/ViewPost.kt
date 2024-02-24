@@ -1,5 +1,7 @@
 package ru.netology.nmedia.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.adapter.OnInteractionListener
+import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FragmentViewPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.StringArg
@@ -63,6 +67,16 @@ class ViewPost : Fragment() {
         )
 
 
+//        if (post.videoId != null) {
+//            Picasso.get().load("https://img.youtube.com/vi/${post.videoId}/0.jpg").into(video)
+//            video.setOnClickListener {
+//                onInteractionListener.onOpenVideo(post)
+//            }
+//        }
+//        else {
+//            video.setImageResource(android.R.color.transparent)
+//        }
+
         binding.menu.setOnClickListener {
             PopupMenu(it.context, it).apply {
                 inflate(R.menu.options_post)
@@ -92,6 +106,8 @@ class ViewPost : Fragment() {
                     }
                 }
             }.show()
+
+
         }
 
         return binding.root

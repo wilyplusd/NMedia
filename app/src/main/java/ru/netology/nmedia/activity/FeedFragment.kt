@@ -44,12 +44,12 @@ class FeedFragment : Fragment() {
             false
         )
 
-        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
-            if (result != null) {
-                viewModel.changeContent(result)
-                viewModel.save()
-            }
-        }
+//        val newPostLauncher = registerForActivityResult(NewPostResultContract()) { result ->
+//            if (result != null) {
+//                viewModel.changeContent(result)
+//                viewModel.save()
+//            }
+//        }
 
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onEdit(post: Post) {
