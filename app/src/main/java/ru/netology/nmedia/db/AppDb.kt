@@ -16,6 +16,7 @@ abstract class AppDb : RoomDatabase() {
         private var instance: AppDb? = null
 
         fun getInstance(context: Context): AppDb {
+            //context.deleteDatabase("app.db")
             return instance ?: synchronized(this) {
                 instance ?: buildDatabase(context).also { instance = it }
             }
