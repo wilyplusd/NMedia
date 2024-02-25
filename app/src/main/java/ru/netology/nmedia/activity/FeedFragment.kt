@@ -9,22 +9,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-
-
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.ViewPost.Companion.author
-import ru.netology.nmedia.activity.ViewPost.Companion.content
-import ru.netology.nmedia.activity.ViewPost.Companion.published
-import ru.netology.nmedia.activity.ViewPost.Companion.videoId
 import ru.netology.nmedia.activity.ViewPost.Companion.idPost
-import ru.netology.nmedia.activity.ViewPost.Companion.likes
-
-
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
-
-
 import ru.netology.nmedia.databinding.FragmentFeedBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
@@ -56,7 +45,7 @@ class FeedFragment : Fragment() {
             }
 
             override fun onLike(post: Post) {
-                viewModel.like(post.id)
+               viewModel.like(post.id)
             }
 
             override fun onRemove(post: Post) {
@@ -64,6 +53,7 @@ class FeedFragment : Fragment() {
             }
 
             override fun onShare(post: Post) {
+               viewModel.share(post.id)
                 val intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_TEXT, post.content)
@@ -90,11 +80,6 @@ class FeedFragment : Fragment() {
                     R.id.action_feedFragment_to_viewPost,
                     Bundle().apply {
                         idPost = post.id
-                        author = post.author
-                        content = post.content
-                        published = post.published
-                        videoId = post.videoId
-                        likes = post.likes
 
                     }
                 )

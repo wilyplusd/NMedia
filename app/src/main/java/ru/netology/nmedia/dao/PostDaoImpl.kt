@@ -122,7 +122,7 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
         db.execSQL(
             """
            UPDATE posts SET
-               shares = CASE WHEN likedByMe THEN 0 ELSE 1 END
+               SHARES = shares + 1
            WHERE id = ?;
         """.trimIndent(), arrayOf(id)
         )

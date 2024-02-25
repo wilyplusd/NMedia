@@ -19,7 +19,11 @@ class PostRepositorySQLiteImpl(
     override fun getAll(): LiveData<List<Post>> = data
 
     override fun share(id: Long) {
-        TODO("Not yet implemented")
+        dao.share(id)
+        posts = posts.map {
+            if (it.id != id) it else it.copy(shares = it.shares + 1)
+        }
+        data.value = posts
     }
 
     override fun save(post: Post) {

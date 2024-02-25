@@ -6,18 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostViewHolder
 import ru.netology.nmedia.databinding.FragmentViewPostBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.util.IntArg
 import ru.netology.nmedia.util.LongArg
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
@@ -26,11 +23,6 @@ import ru.netology.nmedia.viewmodel.PostViewModel
 class ViewPost : Fragment() {
     companion object {
         var Bundle.idPost: Long by LongArg
-        var Bundle.author: String? by StringArg
-        var Bundle.content: String? by StringArg
-        var Bundle.published: String? by StringArg
-        var Bundle.videoId: String? by StringArg
-        var Bundle.likes: Int by IntArg
     }
 
     private val viewModel: PostViewModel by viewModels(
@@ -55,7 +47,6 @@ class ViewPost : Fragment() {
                 post = it
             }
             PostViewHolder(binding.singlePost, object : OnInteractionListener {
-                // Вариант для конкретного фрагмента (учитывая переходы)
                 override fun onEdit(post: Post) {
                     viewModel.edit(post)
                     findNavController().navigate(
@@ -85,7 +76,7 @@ class ViewPost : Fragment() {
                     val shareIntent =
                         Intent.createChooser(intent, getString(R.string.chooser_share_post))
                     startActivity(shareIntent)
-
+                    viewModel.share(post.id)
                 }
 
                 override fun onOpenVideo(post: Post) {
