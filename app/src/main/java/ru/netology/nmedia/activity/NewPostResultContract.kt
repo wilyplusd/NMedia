@@ -9,7 +9,7 @@ import ru.netology.nmedia.dto.Post
 class NewPostResultContract : ActivityResultContract<Post?, String?>() {
 
     override fun createIntent(context: Context, input: Post?): Intent =
-        Intent(context, NewPostActivity::class.java)
+        Intent(context, NewPostFragment::class.java)
             .putExtra("postContent", input?.content)
 
     override fun parseResult(resultCode: Int, intent: Intent?): String? =
