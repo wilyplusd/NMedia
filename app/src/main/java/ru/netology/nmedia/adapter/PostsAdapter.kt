@@ -6,22 +6,21 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.dto.numberCalculation
 
+
 interface OnInteractionListener {
     fun onLike(post: Post) {}
-
     fun onShare(post: Post) {}
     fun onEdit(post: Post) {}
     fun onRemove(post: Post) {}
+    fun onOpenVideo(post: Post) {}
+    fun onViewPost(post: Post) {}
 }
-
-//typealias OnLikeListener = (post: Post) -> Unit
-//typealias OnShareListener = (post: Post) -> Unit
-//typealias OnRemoveListener = (post: Post) -> Unit
 
 class PostsAdapter(
     private val onInteractionListener: OnInteractionListener,
@@ -57,12 +56,19 @@ class PostViewHolder(
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            like.setImageResource(
-                if (post.likedByMe) R.drawable.ic_liked_24 else R.drawable.ic_like_24
-            )
-            countLike.text = numberCalculation(post.likes)
-            countView.text = numberCalculation(post.views)
-            countShare.text = numberCalculation(post.shares)
+            like.isChecked = post.likedByMe
+            like.text = numberCalculation(post.likes)
+            view.text = numberCalculation(post.views)
+            share.text = numberCalculation(post.shares)
+            if (post.videoId != null) {
+                Picasso.get().load("https://img.youtube.com/vi/${post.videoId}/0.jpg").into(video)
+                video.setOnClickListener {
+                    onInteractionListener.onOpenVideo(post)
+                }
+            }
+            else {
+                video.setImageResource(android.R.color.transparent)
+            }
 
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
@@ -92,6 +98,20 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
 
+            content.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+
+            author.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+            published.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
+
+            avatar.setOnClickListener {
+                onInteractionListener.onViewPost(post)
+            }
 
         }
     }
